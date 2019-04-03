@@ -1,15 +1,15 @@
-# mongoAPI
-BYU IT-350 Databases - MongoDB API Project
+# MongoDB API Project
+BYU IT-350 Databases
 
-## Useful Links
+### Useful Links
 Execute query:
 https://www.php.net/manual/en/mongodb-driver-manager.executequery.php
 
 JSON Editor
 http://jsoneditoronline.org
 
-## Useful commands
-Create roles example
+### Useful commands
+Create roles example:
 ```
 db.createRole
 ({
