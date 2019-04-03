@@ -13,15 +13,15 @@ Create roles example
 ```
 db.createRole
 ({
-  role: "myRole",
-  privileges: [
-    { resource: { db: "someDB", collection: "someCollection" }, actions: [ "find", "update", "insert", "remove" ] },
-  ],
-  roles: [
-    { role: "readWrite", db: "someDB" }
-  ]
- },
- { w: "majority" , wtimeout: 5000 
+	  role: "myRole",
+	  privileges: [
+	    { resource: { db: "someDB", collection: "someCollection" }, actions: [ "find", "update", "insert", "remove" ] },
+	  ],
+	  roles: [
+	    { role: "readWrite", db: "someDB" }
+	  ]
+	 },
+	 { w: "majority" , wtimeout: 5000 
  })
 
 ```
@@ -40,11 +40,11 @@ Insert example:
 ```
 db.blog.insert
 ([{
-  authors: ['test author 1', 'test author 2','test author 3' ],
-  date: '2019-04-03',
-  contents: ['text1', 'text2', 'text3'],
-  keywords: ['puppy', 'fluffy', 'cute'],
-  related_articles: ['mongodb', 'database', 'NoSQL']
+	  authors: ['test author 1', 'test author 2','test author 3' ],
+	  date: '2019-04-03',
+	  contents: ['text1', 'text2', 'text3'],
+	  keywords: ['puppy', 'fluffy', 'cute'],
+	  related_articles: ['mongodb', 'database', 'NoSQL']
 }])
 ```
 
