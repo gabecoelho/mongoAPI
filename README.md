@@ -48,4 +48,9 @@ db.blog.insert
 }])
 ```
 
+Authentication:
+```
+mongo --port 27017 -u "gabe" -p --authenticationDatabase admin
+```
+
 
