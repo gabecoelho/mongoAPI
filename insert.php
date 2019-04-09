@@ -21,13 +21,13 @@ $object = array(
 
 // Insert document into driver
 $bulk->insert($object);
-$manager->executeBulkWrite('db.blog', $bulk);
+$manager->executeBulkWrite('PU.blog', $bulk);
 
 $filter = [];
 $options = [];
 
 $query = new MongoDB\Driver\Query($filter, $options);
-$cursor = $manager->executeQuery('db.blog', $query);
+$cursor = $manager->executeQuery('PU.blog', $query);
 
 // Insert into database
 foreach ($cursor as $document) {
