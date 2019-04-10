@@ -5,9 +5,22 @@
  * INSERT
  */
 
+// required headers
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+// Gather data
+$username = $_GET['username'];
+$pwd = $_GET['password'];
+
+$server = "mongodb://" . $username . ":" . $pwd . "@localhost:27017/PU";
 
 // Connect to MongoDB and get the bulk write driver
-$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+$manager = new MongoDB\Driver\Manager($server);
+
 $bulk = new MongoDB\Driver\BulkWrite;
 
 // Build document
@@ -29,7 +42,6 @@ $options = [];
 $query = new MongoDB\Driver\Query($filter, $options);
 $cursor = $manager->executeQuery('PU.blog', $query);
 
-// Insert into database
 foreach ($cursor as $document) {
     $entry = json_encode($document, JSON_PRETTY_PRINT);
     var_dump($entry);
