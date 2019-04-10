@@ -4,6 +4,7 @@ BYU IT-350 Databases
 ### Useful Links
 Execute query:
 https://www.php.net/manual/en/mongodb-driver-manager.executequery.php
+https://www.roytuts.com/rest-api-crud-example-in-php-and-mongodb/
 
 JSON Editor
 http://jsoneditoronline.org
@@ -50,7 +51,9 @@ db.blog.insert
 
 Authentication:
 ```
-mongo --port 27017 -u "gabe" -p --authenticationDatabase admin
+mongo --port 20000 -u "gabe" -p --authenticationDatabase admin
 ```
 
+Configuration Changes
+Mongo is running on port 20000.
 
