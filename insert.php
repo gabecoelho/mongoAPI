@@ -21,29 +21,31 @@ $server = "mongodb://" . $username . ":" . $pwd . "@localhost:27017/PU";
 // Connect to MongoDB and get the bulk write driver
 $manager = new MongoDB\Driver\Manager($server);
 
-$bulk = new MongoDB\Driver\BulkWrite;
+$object = json_decode(file_get_contents("php://input", true));
+
+$insert = new MongoDB\Driver\BulkWrite();
 
 // Build document
-$object = array( 
-   "authors" => ["me", "you"], 
-   "date" => "2019-04-03", 
-   "contents" => ["blog stuff", "blog again please"],
-   "keywords" => ["keyword1", "keyword2"],
-   "related_articles" => ["insert_test", "testing_again"]
-);
-
+//$object = array( 
+//   "authors" => ["moroni", "you"], 
+//   "date" => "2019-04-03", 
+//   "contents" => ["blog stuff", "blog again please"],
+//   "keywords" => ["keyword1", "keyword2"],
+//   "related_articles" => ["insert_test", "testing_again"]
+//);
 // Insert document into driver
-$bulk->insert($object);
-$manager->executeBulkWrite('PU.blog', $bulk);
+$insert->insert($object);
+$result = $manager->executeBulkWrite('PU.blog', $insert);
 
-$filter = [];
-$options = [];
-
-$query = new MongoDB\Driver\Query($filter, $options);
-$cursor = $manager->executeQuery('PU.blog', $query);
-
-foreach ($cursor as $document) {
-    $entry = json_encode($document, JSON_PRETTY_PRINT);
-    var_dump($entry);
+// verify
+if ($result->getInsertedCount() == 1) {
+    echo json_encode(
+		array("message" => "Record successfully created")
+	);
+} else {
+    echo json_encode(
+            array("message" => "Error while saving record")
+    );
 }
+
 ?>

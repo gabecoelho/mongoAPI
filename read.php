@@ -1,10 +1,23 @@
 <?php
+/*
+ * BYU IT-350 - Databases
+ * Gabe Coelho and Junior Gomes
+ * Read
+ */
+ini_set('display_error',1);
 
-$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+// required headers
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
 
+// Gather data
+$username = $_GET['username'];
+$pwd = $_GET['password'];
 
+$server = "mongodb://" . $username . ":" . $pwd . "@localhost:27017/PU";
 
-
+// Connect to MongoDB and get the bulk write driver
+$manager = new MongoDB\Driver\Manager($server);
 $filter = [];
 $options = [];
 
@@ -18,3 +31,4 @@ foreach ($cursor as $document) {
 }
 
 ?>
+
