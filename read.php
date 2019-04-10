@@ -11,10 +11,10 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // Gather data
-$username = $_GET['username'];
-$pwd = $_GET['password'];
+$username = filter_var($_GET['username'], FILTER_SANITIZE_STRING);
+$pwd = filter_var($_GET['password'], FILTER_SANITIZE_STRING);
 
-$server = "mongodb://" . $username . ":" . $pwd . "@localhost:27017/PU";
+$server = "mongodb://" . $username . ":" . $pwd . "@localhost:20000/PU";
 
 // Connect to MongoDB and get the bulk write driver
 $manager = new MongoDB\Driver\Manager($server);
