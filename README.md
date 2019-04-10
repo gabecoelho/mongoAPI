@@ -18,9 +18,7 @@ db.createRole
 	  privileges: [
 	    { resource: { db: "someDB", collection: "someCollection" }, actions: [ "find", "update", "insert", "remove" ] },
 	  ],
-	  roles: [
-	    { role: "readWrite", db: "someDB" }
-	  ]
+	  roles: []
 	 },
 	 { w: "majority" , wtimeout: 5000 
  })
